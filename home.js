@@ -5,7 +5,15 @@ window.addEventListener('scroll', function main() {
     animasiDeskripsi(posisiScroll);
     animasiKlinik(posisiScroll);
     animasiBelanja(posisiScroll);
+    animasiEvent(posisiScroll);
 })
+
+document.addEventListener('DOMContentLoaded', function main2() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+});
 
 function animasiNavigasi(posisiScroll) {
     const Navigasi = document.querySelector('.Navigasi');
@@ -14,6 +22,7 @@ function animasiNavigasi(posisiScroll) {
     const Home = document.querySelector('.Navigasi').querySelector('a:nth-of-type(1)');
     const Klinik = document.querySelector('.Navigasi').querySelector('a:nth-of-type(2)');
     const Belanja = document.querySelector('.Navigasi').querySelector('a:nth-of-type(3)');
+    const Event = document.querySelector('.Navigasi').querySelector('a:nth-of-type(4)');
     //animasi 1
     if (posisiScroll >= 78) {
         Navigasi.style.position = 'fixed';
@@ -56,14 +65,28 @@ function animasiNavigasi(posisiScroll) {
         Home.style.opacity = '1';
         Belanja.style.borderBottom = 'none';
         Belanja.style.opacity = '1'
+        Event.style.borderBottom = 'none';
+        Event.style.opacity = '1';
     }
     else if (posisiScroll >= 925 && posisiScroll < 1645) {
+        Belanja.style.borderBottom = '2px solid' + warnaButton(posisiScroll);
+        Belanja.style.opacity = '0.7';
         Klinik.style.borderBottom = 'none';
         Klinik.style.opacity = '1';
         Home.style.borderBottom = 'none';
         Home.style.opacity = '1';
-        Belanja.style.borderBottom = '2px solid' + warnaButton(posisiScroll);
-        Belanja.style.opacity = '0.7';
+        Event.style.borderBottom = 'none';
+        Event.style.opacity = '1';
+    }
+    else if (posisiScroll >= 1645 && posisiScroll <= 2320) {
+        Event.style.borderBottom = '2px solid' + warnaButton(posisiScroll);
+        Event.style.opacity = '0.7';
+        Klinik.style.borderBottom = 'none';
+        Klinik.style.opacity = '1';
+        Home.style.borderBottom = 'none';
+        Home.style.opacity = '1';
+        Belanja.style.borderBottom = 'none';
+        Belanja.style.opacity = '1';
     }
     else {
         Home.style.borderBottom = '2px solid black';
@@ -72,6 +95,8 @@ function animasiNavigasi(posisiScroll) {
         Klinik.style.borderBottom = 'none';
         Belanja.style.borderBottom = 'none';
         Belanja.style.opacity = '1'
+        Event.style.borderBottom = 'none';
+        Event.style.opacity = '1';
     }
 }
 
@@ -106,14 +131,12 @@ function animasiDeskripsi(posisiScroll) {
 
 function animasiKlinik(posisiScroll) {
     const Klinik = document.querySelectorAll('.AnimasiKlinik');
-    const Background = document.querySelector('.HomeBackground');
     if (posisiScroll >= 308 && posisiScroll <= 925) {
         Klinik.forEach(function(element) {
             element.style.transform = 'translateX(0)';
             element.style.filter = 'blur(0px)';
             element.style.opacity = '1';
         })
-        Background.style.backgroundSize = '100vw 612px';
     }
     else {
         Klinik.forEach(function(element) {
@@ -121,7 +144,6 @@ function animasiKlinik(posisiScroll) {
             element.style.filter = 'blur(5px)';
             element.style.opacity = '0';
         })
-        Background.style.backgroundSize = '100vw 100vh';
     }
 }
 
@@ -137,6 +159,31 @@ function animasiBelanja(posisiScroll) {
     else {
         Belanja.forEach(function(element) {
             element.style.transform = 'translateX(-100%)';
+            element.style.filter = 'blur(5px)';
+            element.style.opacity = '0';
+        })
+    }
+}
+
+function animasiEvent(posisiScroll) {
+    const Event = document.querySelectorAll('.AnimasiEvent');
+    if (posisiScroll >= 1645 && posisiScroll <= 2320) {
+        Event.forEach(function(element) {
+            element.style.transform = 'translateY(0)';
+            element.style.filter = 'blur(0px)';
+            element.style.opacity = '1';
+        })
+    }
+    else if (posisiScroll < 1645){
+        Event.forEach(function(element) {
+            element.style.transform = 'translateY(100%)';
+            element.style.filter = 'blur(5px)';
+            element.style.opacity = '0';
+        })
+    }
+    else if (posisiScroll > 2320){
+        Event.forEach(function(element) {
+            element.style.transform = 'translateY(-100%)';
             element.style.filter = 'blur(5px)';
             element.style.opacity = '0';
         })
