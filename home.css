@@ -5,11 +5,11 @@ html {
 body {
     height: 250vh;
 }
-
+/*
 section {
-    border-bottom: 1px red solid;;
+    border-bottom: 1px rgba(255, 0, 0,0) solid;
 }
-
+*/
 .HomeBackground {
     background: linear-gradient(rgb(139, 229, 243),#FFFED3);
     background-size: 100vw 612px;
@@ -268,10 +268,11 @@ section {
 }
 
 .DivTentang {
+
     display: flex;
+    align-items: center; /* Untuk memusatkan elemen secara vertikal */
+    justify-content: center; /* Untuk memusatkan elemen secara horizontal */
     flex-direction: row;
-    justify-content: center;
-    align-content: center;
     margin-top: 30px;
 }
 
@@ -279,6 +280,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .Tentang div div p {
@@ -288,7 +290,65 @@ section {
 }
 
 .Tentang div img {
-    height: auto;
+    height: 55vh;
     width: 45vw;
     margin-right: 60px;
+}
+
+.TimGembong {
+    height: 70vh;
+    width: 55vw;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+.AnimasiTentang {
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+.JudulTimPeneliti {
+    margin-bottom: 100px;
+}
+
+.Footer {
+    background-color:#f8f9fa;
+    padding: 20px 0;
+    box-shadow: 0 0px 20px
+}
+
+.FooterRow {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.FooterRow div {
+
+    margin: 10px;
+}
+
+.FooterRow h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.FooterRow p {
+    margin: 5px 0;
+}
+
+.FooterRow i {
+    margin-right: 8px;
+}
+
+.FooterRow a {
+    color: black;
+    text-decoration: none;
+}
+
+.FooterRow a:hover {
+    opacity: 0.6;
 }

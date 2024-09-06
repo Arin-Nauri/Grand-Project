@@ -1,11 +1,12 @@
 window.addEventListener('scroll', function main() {
     const posisiScroll = window.scrollY;
-    console.log(posisiScroll);
+    console.log(posisiScroll)
     animasiNavigasi(posisiScroll);
     animasiDeskripsi(posisiScroll);
     animasiKlinik(posisiScroll);
     animasiBelanja(posisiScroll);
     animasiEvent(posisiScroll);
+    animasiTentang(posisiScroll);
 })
 
 document.addEventListener('DOMContentLoaded', function main2() {
@@ -23,6 +24,7 @@ function animasiNavigasi(posisiScroll) {
     const Klinik = document.querySelector('.Navigasi').querySelector('a:nth-of-type(2)');
     const Belanja = document.querySelector('.Navigasi').querySelector('a:nth-of-type(3)');
     const Event = document.querySelector('.Navigasi').querySelector('a:nth-of-type(4)');
+    const Tentang = document.querySelector('.Navigasi').querySelector('a:nth-of-type(5)');
     //animasi 1
     if (posisiScroll >= 78) {
         Navigasi.style.position = 'fixed';
@@ -67,6 +69,8 @@ function animasiNavigasi(posisiScroll) {
         Belanja.style.opacity = '1'
         Event.style.borderBottom = 'none';
         Event.style.opacity = '1';
+        Tentang.style.borderBottom = 'none';
+        Tentang.style.opacity = '1';
     }
     else if (posisiScroll >= 925 && posisiScroll < 1645) {
         Belanja.style.borderBottom = '2px solid' + warnaButton(posisiScroll);
@@ -77,6 +81,8 @@ function animasiNavigasi(posisiScroll) {
         Home.style.opacity = '1';
         Event.style.borderBottom = 'none';
         Event.style.opacity = '1';
+        Tentang.style.borderBottom = 'none';
+        Tentang.style.opacity = '1';
     }
     else if (posisiScroll >= 1645 && posisiScroll <= 2320) {
         Event.style.borderBottom = '2px solid' + warnaButton(posisiScroll);
@@ -87,6 +93,20 @@ function animasiNavigasi(posisiScroll) {
         Home.style.opacity = '1';
         Belanja.style.borderBottom = 'none';
         Belanja.style.opacity = '1';
+        Tentang.style.borderBottom = 'none';
+        Tentang.style.opacity = '1';
+    }
+    else if (posisiScroll > 2320) {
+        Tentang.style.borderBottom = '2px solid' + warnaButton(posisiScroll);
+        Tentang.style.opacity = '0.7';
+        Klinik.style.borderBottom = 'none';
+        Klinik.style.opacity = '1';
+        Home.style.borderBottom = 'none';
+        Home.style.opacity = '1';
+        Belanja.style.borderBottom = 'none';
+        Belanja.style.opacity = '1';
+        Event.style.borderBottom = 'none';
+        Event.style.opacity = '1';
     }
     else {
         Home.style.borderBottom = '2px solid black';
@@ -97,6 +117,8 @@ function animasiNavigasi(posisiScroll) {
         Belanja.style.opacity = '1'
         Event.style.borderBottom = 'none';
         Event.style.opacity = '1';
+        Tentang.style.borderBottom = 'none';
+        Tentang.style.opacity = '1';
     }
 }
 
@@ -181,10 +203,24 @@ function animasiEvent(posisiScroll) {
             element.style.opacity = '0';
         })
     }
-    else if (posisiScroll > 2320){
+    else if (posisiScroll >= 2320){
         Event.forEach(function(element) {
             element.style.transform = 'translateY(-100%)';
             element.style.filter = 'blur(5px)';
+            element.style.opacity = '0';
+        })
+    }
+}
+
+function animasiTentang(posisiScroll) {
+    const Tentang = document.querySelectorAll('.AnimasiTentang');
+    if (posisiScroll > 2320) {
+        Tentang.forEach(function(element) {
+            element.style.opacity = '1';
+        })
+    }
+    else {
+        Tentang.forEach(function(element) {
             element.style.opacity = '0';
         })
     }
